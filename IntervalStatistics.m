@@ -14,6 +14,14 @@ function [intervalMean, intervalVariance] = IntervalStatistics(samples)
 %   The algorithm outline here follows the description of:
 %   Ferson, "Experimental uncertainty estimation and statistics for data 
 %   having interval uncertainty." Sandia National Laboratories
+    
+    if isequal(samples(:,1),samples(:,2))
+       means = mean(samples(:,1));
+       vars = var(samples(:,1));
+       intervalMean = [means, means];
+       intervalVariance = [vars,vars];
+       return
+    end
 
     intervalMean = [mean(samples(:,1)),mean(samples(:,2))];
     intervalVariance = [0,0];
@@ -69,7 +77,6 @@ function [intervalMean, intervalVariance] = IntervalStatistics(samples)
         NsFinal1   = NsFinal0(NsFinal0 ~=0)./MsFinal1;
 
         vars = MsFinal1 - SksFinal1.^2 ./((N .* NsFinal1));
-
         intervalVariance(1) = min(vars) * (N/(N-1));
     end
     p = num2cell(samples,2);
