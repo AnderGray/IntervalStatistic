@@ -1,4 +1,10 @@
 function X = cartprod(varargin)
+%
+%   This file has been taken from: 
+%   https://uk.mathworks.com/matlabcentral/fileexchange/5475-cartprod-cartesian-product-of-multiple-sets
+%
+%   Author: David Fass
+%   
 %CARTPROD Cartesian product of multiple sets.
 %
 %   X = CARTPROD(A,B,C,...) returns the cartesian product of the sets 
